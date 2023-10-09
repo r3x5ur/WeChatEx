@@ -8,6 +8,7 @@
 #include <Shlwapi.h>
 
 #pragma comment( lib, "Shlwapi.lib")
+#pragma comment(lib, "User32.lib")
 
 #pragma comment(linker, "/EXPORT:GetFileVersionInfoA=AheadLib_GetFileVersionInfoA,@1")
 #pragma comment(linker, "/EXPORT:GetFileVersionInfoByHandle=AheadLib_GetFileVersionInfoByHandle,@2")
@@ -135,7 +136,7 @@ BOOL WINAPI Init()
 
 #include <string>
 #include "log.h"
-#include "MinHook.h"
+#include "vendor/MinHook.h"
 
 template <typename T>
 class ProtectMemory
@@ -526,6 +527,8 @@ DWORD WINAPI ThreadProc_WeChatAppEx(LPVOID lpThreadParameter)
     while (kEnableWxLog)
     {
         // 41 57 41 56 41 55 41 54 56 57 55 53 48 81 EC A8 02 00 00 0F 29 B4 24 90 02 00 00 4D 89 C5 49 89 D7 49 89 CE 48 8B 05 31 12 D6 06 48 31 E0 48 89 84 24 88 02 00 00 B9 02 00 00 00
+        
+        //F6 05 * * * * ? 0F 85 ? ? ? ? E9 ? ? ? ? 
         intptr_t pvDebugFlag = (intptr_t)GetModuleHandle(NULL) + 0x8994EE8;
         // debugFlag
         WriteMemory<int32_t>(pvDebugFlag, 0xFFF);
