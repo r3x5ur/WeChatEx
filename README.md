@@ -1,6 +1,7 @@
 # WeChatEx
-Hijack WeChatAppEx
 
-劫持系统dll
-version.dll
-容易被微信检测，导致封号，最好别用
+- 技术手段
+- 劫持系统 `version.dll`
+
+- 优点：方便，扔到目录下就能访问
+- 缺点：容易被微信检测，导致封号
